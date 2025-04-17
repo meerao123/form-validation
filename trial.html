@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>form validation</title>
+        <script>
+            function formValidate(){
+                name=document.forms["myForm"]["username"].value
+                email=document.forms["myForm"]["email"].value
+                age=document.forms["myForm"]["age"].value
+                if(name=""){
+                    alert("please enter your name!");
+                    return false;
+                }
+                let emailPattern=/^[^ ]+@[^ ]+\.[a-z]{2,3}$/
+                if(!emailPattern.test(email)){
+                    alert("enter email");
+                    return false;
+                }
+                if(isNaN(age) || age<0 || age>100){
+                    alert("enter valid age");
+                    return false;
+                }
+                alert("form submitted successfully!")
+                return true;
+            }
+
+        </script>
+    </head>
+    <body>
+        <h1>user information</h1>
+        <form name="myForm" onsubmit="return formValidate()">
+        username: <input type="text" name="username"><br><br>
+        email: <input type="text" name="email"><br><br>
+        age: <input type="text" name="age"><br><br>
+        <input type="submit" value="submit">
+    </form>
+    </body>
+</html>
